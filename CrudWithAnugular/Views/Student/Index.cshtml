@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/Scripts/Student.js"></script>
+<h2>Student</h2>
+<div ng-app="myApp">
+    <div ng-controller="myCntrl">
+        <div class="form-horizontal" role="form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="control-label">Student Name :</label>
+                            <input type="text" class="form-control" ng-model="SName" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="control-label">Student Age :</label>
+                            <input type="text" class="form-control" ng-model="SAge" />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label class="control-label">Student Department :</label>
+                            <input type="text" class="form-control" ng-model="SDepartment" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input type="submit" class="form-control" id="insertStd" value="Submit" ng-click="InsertStudent()" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-init="GetAllStudent()">
+            <h4>Student Record</h4>
+            <table cellpadding="12" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Sr#</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Department</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="Std in Student">
+                        <td>{{Std.ID}}</td>
+                        <td>{{Std.Name}}</td>
+                        <td>{{Std.Age}}</td>
+                        <td>{{Std.Department}}</td>
+                        <td>
+                            <input type="button" ng-click="UpdateStudent(Std)" value="Update" class="btn btn-warning" />
+                            <input type="button" ng-click="DeleteStudent(Std)" value="Delete" class="btn btn-danger" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
